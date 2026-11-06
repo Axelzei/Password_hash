@@ -98,7 +98,7 @@
             <?php if(isset($_POST["registrar"])){
                 echo "<p>".$con."</p>";
             }?>
-
+            <br>
             <button type="submit" name="registrar">Registrar</button>
         </form>
         <br>
