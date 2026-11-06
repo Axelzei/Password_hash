@@ -35,9 +35,6 @@ html{
     border-radius: 5px;
     display: inline-block;
 }
-.exito{
-    margin: 0 auto;
-}
 .titulo{
     display: flex;
     justify-content: center;
