@@ -37,11 +37,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="dis.css" type="text/css">
 </head>
-<body>
+<body class="body1">
     <?php if($x==0):?>
         <form method="POST" action="">
+            <div class="titulo">
+            <img src="Imagenes/animal2.png" alt="">
             <h1>Ingrese los datos que se le indican</h1>
+            <img src="Imagenes/animal.png" alt="">
+            </div>
+            <br><br>
             <label for="nombre">Ingrese su nombre:</label>
             <input type="text" step="any" name="nombre" id="nombre" required>
             <label for="usuario">Ingrese su usuario:</label>
@@ -54,16 +60,19 @@
             <input type="text" step="any" name="cont_fir" id="cont_fir" required>
             <br>
             <?php if(isset($_POST["registrar"])){
-                echo $con;
+                echo "<p>".$con."</p>";
             }?>
 
             <br><br>
             <button type="submit" name="registrar">Registrar</button>
-            <a href="login.php">Regresar al login</a>
         </form>
+        <br>
+        <a href="login.php" class="boton">Regresar al login</a>
     <?php elseif($x==1):?>
-        <p>Su cuenta se a registrado con exito</p>
-        <a href="login.php">Regresar al login</a>
+        <div class="exito">
+        <p>Su cuenta se a registrado con exito :D</p>
+        <a href="login.php" class="boton">Regresar al login</a>
+        </div>
     <?php endif;?>   
 </body>
 </html>
