@@ -16,9 +16,13 @@
         $con="";
 
         if($contrase==$cont_fir){
-            $_SESSION["registros"]["nombre"][]=$nombre;
-            $_SESSION["registros"]["usuario"][]=$usuario;
-            $_SESSION["registros"]["contrase"][]=password_hash($contrase, PASSWORD_DEFAULT);
+            if(strlen($contrase)>=6){
+                $_SESSION["registros"]["nombre"][]=$nombre;
+                $_SESSION["registros"]["usuario"][]=$usuario;
+                $_SESSION["registros"]["contrase"][]=password_hash($contrase, PASSWORD_DEFAULT);
+            }else{
+                $con="La contaseña debe de tener minimo 6 carcteres";
+            }
         }else{
             $con="La contraseña no coinciden";
         }
