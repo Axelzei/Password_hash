@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $x=0;
     if(!isset($_SESSION["registros"])){
         $_SESSION["registros"] = [
             "nombre" => [],
@@ -20,6 +21,7 @@
                 $_SESSION["registros"]["nombre"][]=$nombre;
                 $_SESSION["registros"]["usuario"][]=$usuario;
                 $_SESSION["registros"]["contrase"][]=password_hash($contrase, PASSWORD_DEFAULT);
+                $x=1;
             }else{
                 $con="La contaseña debe de tener minimo 6 carcteres";
             }
@@ -37,25 +39,31 @@
     <title>Registro</title>
 </head>
 <body>
-    <form method="POST" action="">
-        <h1>Ingrese los datos que se le indican</h1>
-        <label for="nombre">Ingrese su nombre:</label>
-        <input type="text" step="any" name="nombre" id="nombre" required>
-        <label for="usuario">Ingrese su usuario:</label>
-        <input type="text" step="any" name="usuario" id="usuario" required>
-        <br><br>
+    <?php if($x==0):?>
+        <form method="POST" action="">
+            <h1>Ingrese los datos que se le indican</h1>
+            <label for="nombre">Ingrese su nombre:</label>
+            <input type="text" step="any" name="nombre" id="nombre" required>
+            <label for="usuario">Ingrese su usuario:</label>
+            <input type="text" step="any" name="usuario" id="usuario" required>
+            <br><br>
 
-        <label for="cont">Ingrese su contraseña:</label>
-        <input type="text" step="any" name="cont" id="cont" required>
-        <label for="cont_fir">Confirme su contraseña:</label>
-        <input type="text" step="any" name="cont_fir" id="cont_fir" required>
-        <br>
-        <?php if(isset($_POST["registrar"])){
-            echo $con;
-        }?>
+            <label for="cont">Ingrese su contraseña:</label>
+            <input type="text" step="any" name="cont" id="cont" required>
+            <label for="cont_fir">Confirme su contraseña:</label>
+            <input type="text" step="any" name="cont_fir" id="cont_fir" required>
+            <br>
+            <?php if(isset($_POST["registrar"])){
+                echo $con;
+            }?>
 
-        <br><br>
-        <button type="submit" name="registrar">Registrar</button>
-    </form>
+            <br><br>
+            <button type="submit" name="registrar">Registrar</button>
+            <a href="login.php">Regresar al login</a>
+        </form>
+    <?php elseif($x==1):?>
+        <p>Su cuenta se a registrado con exito</p>
+        <a href="login.php">Regresar al login</a>
+    <?php endif;?>   
 </body>
 </html>
